@@ -1,0 +1,17 @@
+.chatbutton_button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #f44336;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.chatbutton_button img {
+    width: 60%;
+}
