@@ -16,7 +16,8 @@ function NavBar() {
       <Nav.Link href="/user_purchases">My purchases</Nav.Link>
       </NavDropdown>
       <NavDropdown title="Shopper" id="basic-nav-dropdown">
-      <Nav.Link href="/user_purchases">My purchases</Nav.Link>
+      <Nav.Link href="/my_selections">My selections</Nav.Link>
+      <Nav.Link href="/new_selection">New selection</Nav.Link>
       </NavDropdown>
      </Nav>
     </Navbar.Collapse>

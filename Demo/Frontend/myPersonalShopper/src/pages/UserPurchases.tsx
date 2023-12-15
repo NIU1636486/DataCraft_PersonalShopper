@@ -14,12 +14,13 @@ interface SelectionData {
 }
 
 function UserPurchases() {
+  const [userIdInput, setUserIdInput] = useState<number>(4); // Default user ID
   const [selectionData, setSelectionData] = useState<SelectionData | null>(null);
   const [buttonStates, setButtonStates] = useState<{ [key: number]: boolean }>({});
   const [overallApproval, setOverallApproval] = useState<string>('');
 
   useEffect(() => {
-    const apiUrl = 'http://localhost:8000/selection/0';
+    const apiUrl = `http://localhost:8000/selection/${userIdInput}`;
 
     fetch(apiUrl)
       .then(response => response.json())
@@ -29,7 +30,7 @@ function UserPurchases() {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  }, [userIdInput]);
 
   useEffect(() => {
     // Check if any button is pressed
@@ -76,6 +77,18 @@ function UserPurchases() {
 
   return (
     <div style={{ padding: '50px' }}>
+      <div style={{ marginBottom: '20px' }}>
+        <label>
+          User ID:
+          <input
+            type="number"
+            value={userIdInput}
+            onChange={e => setUserIdInput(Number(e.target.value))}
+            style={{ marginLeft: '10px', width: "50px"}}
+          />
+        </label>
+      </div>
+
       {selectionData && selectionData.approved === 'Waiting' ? (
         <>
           <h2 style={{ paddingBottom: '10px' }}>Your new selection</h2>
