@@ -19,4 +19,11 @@ uvicorn app.main:app --reload
 http://127.0.0.1:8000/docs
 
 # Frontend
-
+## Installation Guide
+```
+npm i
+```
+## Running the frontend
+```
+npm run dev
+```
