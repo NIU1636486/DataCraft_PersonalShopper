@@ -16,7 +16,7 @@ interface SelectionData {
 function getColorAndText(approved: string) {
   const color = (approved === 'Waiting') ? 'blue' :
                 (approved === 'Approved') ? 'green' :
-                (approved === 'Declined') ? 'red' : 'blue'; // Default to blue for unknown cases
+                (approved === 'Declined') ? 'red' : 'blue'; 
   return { color, text: approved === 'Waiting' ? 'Esperant' : (approved === 'Approved' ? 'Aprovat' : 'Denegat') };
 }
 

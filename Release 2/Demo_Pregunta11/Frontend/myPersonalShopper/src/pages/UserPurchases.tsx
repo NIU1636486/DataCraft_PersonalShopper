@@ -87,7 +87,7 @@ function UserPurchases() {
 
       {selectionData && selectionData.approved === 'Waiting' ? (
         <>
-          <h2 style={{ paddingBottom: '10px' }}>Your new selection</h2>
+          <h2 style={{ paddingBottom: '10px' }}>Nova selecció</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {selectionData.clothes.map(clothe => (
               <ClotheCard
@@ -117,7 +117,7 @@ function UserPurchases() {
         </>
       ) : (
         <>
-          <h2 style={{ paddingBottom: '10px' }}>No new selections</h2>
+          <h2 style={{ paddingBottom: '10px' }}>Sense noves seleccions</h2>
         </>
       )}
     </div>
