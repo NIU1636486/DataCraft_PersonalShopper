@@ -30,6 +30,31 @@ uvicorn app.main:app --reload
 ### Interactive API docs
 http://127.0.0.1:8000/docs
 
+## Folder structure
+## Folder structure
+Aquest backend segueix la següent estructura:
+```
+.
+    └── app/
+        ├── backend/              # Funcionalitat backend
+        │   └── session.py            # Database session manager
+        ├── models/               # Models SQLAlchemy 
+        │   ├── user.py               
+        |   └── ...                  
+        ├── routers/              # API routes
+        |   ├── user.py
+        │   └── ...
+        ├── schemas/              # Models Pydantic 
+        |   ├── user.py
+        │   └── ...
+        ├── services/             # Business logic
+        |   ├── user.py
+        |   ├── selection.py
+        │   └── ...
+        ├── config.py             # Configs
+        └── main.py               # Application runner
+```
+
 # Frontend
 ## Installation Guide
 ```
