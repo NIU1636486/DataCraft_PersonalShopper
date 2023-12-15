@@ -14,7 +14,7 @@ interface SelectionData {
 }
 
 function UserPurchases() {
-  const [userIdInput, setUserIdInput] = useState<number>(4);
+  const [userIdInput, setUserIdInput] = useState<number>(0);
   const [selectionData, setSelectionData] = useState<SelectionData | null>(null);
   const [buttonStates, setButtonStates] = useState<{ [key: number]: boolean }>({});
   const [overallApproval, setOverallApproval] = useState<string>('');
