@@ -24,3 +24,8 @@ async def new_clothes_list(clothes: list[Clothes]):
 async def delete_clothes(clothes_id: int):
     service.delete_clothes(clothes_id)
     return {"message": f"Clothes item with ID {clothes_id} deleted successfully"}
+
+@router.get("/{clothes_id}")
+async def get_clothe(clothes_id:int):
+    clothe = service.get_clothe(clothes_id)
+    return clothe

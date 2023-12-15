@@ -2,10 +2,7 @@ from sqlalchemy.engine import URL
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.orm import DeclarativeBase
-
-
-class Base(DeclarativeBase):
-    pass
+from app.models import Base
 
 class DatabaseManager:
     """ 
@@ -17,7 +14,7 @@ class DatabaseManager:
     _instance = None
 
     def __new__(cls): 
-        if cls._instance is None:
+        # if cls._instance is None:
             # connection_url = URL.create(
             #     "mssql+pyodbc",
             #     username=DB_USER,
@@ -31,7 +28,6 @@ class DatabaseManager:
             #     },
             # )
             # cls._engine = create_engine(url=connection_url, echo=True, pool_pre_ping=True)
-            pass
         cls._engine = create_engine('sqlite:///test.db')
         cls.session = sessionmaker( 
             cls._engine, autocommit=False, expire_on_commit=False, class_=Session

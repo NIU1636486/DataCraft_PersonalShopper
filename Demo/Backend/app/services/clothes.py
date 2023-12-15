@@ -21,6 +21,7 @@ class ClothesService:
                 clothes_db = ClothesDB(
                     id = clothes["id"],
                     name = clothes["name"],
+                    url = clothes["url"]
                 )
                 try:
                     session.add(clothes_db)
@@ -43,6 +44,7 @@ class ClothesService:
                     clothes_db = ClothesDB(
                     id = i["id"],
                     name = i["name"],
+                    url = i["url"]
                     )
                     session.add(clothes_db)
                 session.commit()
@@ -59,10 +61,22 @@ class ClothesService:
                 clothes = []
 
                 for result in results.yield_per(1000):
-                    print(result)
                     clothes.append(Clothes.model_validate(result[0]).model_dump())
         return clothes
 
+    def get_clothe(self, clothe_id):
+        with self.db.session() as session:
+            with session.begin():
+                statement = select(ClothesDB).where(ClothesDB.id == clothe_id)
+                result = session.execute(statement)
+                result = [i for i in result]
+                clothe = result[0]
+                if clothe is None:
+                    raise HTTPException(
+                        detail="Not exist",
+                        status_code = status.HTTP_404_NOT_FOUND
+                    )
+            return Clothes.model_validate(clothe[0]).model_dump()
     def delete_clothes(self, clothes_id: int) -> None:
         """
         Deletes a clothes item from the database by ID.
