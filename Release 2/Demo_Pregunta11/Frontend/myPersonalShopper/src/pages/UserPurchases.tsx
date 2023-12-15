@@ -9,12 +9,12 @@ interface SelectionData {
   clothes: {
     id: number;
     name: string;
-    url: string; // New attribute
+    url: string;
   }[];
 }
 
 function UserPurchases() {
-  const [userIdInput, setUserIdInput] = useState<number>(4); // Default user ID
+  const [userIdInput, setUserIdInput] = useState<number>(4);
   const [selectionData, setSelectionData] = useState<SelectionData | null>(null);
   const [buttonStates, setButtonStates] = useState<{ [key: number]: boolean }>({});
   const [overallApproval, setOverallApproval] = useState<string>('');
@@ -33,10 +33,8 @@ function UserPurchases() {
   }, [userIdInput]);
 
   useEffect(() => {
-    // Check if any button is pressed
     const isAnyButtonPressed = Object.values(buttonStates).some(value => value);
 
-    // Set overall approval status
     setOverallApproval(isAnyButtonPressed ? 'Declined' : 'Approved');
   }, [buttonStates]);
 
@@ -53,7 +51,6 @@ function UserPurchases() {
         clothes: updatedClothes,
       };
 
-      // Make a PUT request to update the data
       const apiUrl = `http://localhost:8000/selection/${selectionData.selectionID}`;
       fetch(apiUrl, {
         method: 'PUT',
@@ -64,7 +61,6 @@ function UserPurchases() {
       })
         .then(response => response.json())
         .then(data => {
-          // Reset the state and update UI
           setSelectionData(null);
           setButtonStates({});
           setOverallApproval('');

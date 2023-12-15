@@ -16,7 +16,7 @@ function App() {
       <Navbar/>
       <div className='content'>
         <Routes>
-          <Route path='/' element={<p>Home</p>}/>
+          <Route path='/' element={<div></div>}/>
           <Route path='/login' element={<Login/>}></Route>
           <Route path="/user_purchases" element = {<UserPurchases/>}></Route>
           <Route path="/my_selections" element = {<ShopperSelections/>}></Route>
